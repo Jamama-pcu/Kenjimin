@@ -1,0 +1,847 @@
+
+<!-- Created By CodingNepal -->
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personal Portfolio Website</title>
+    <link rel="stylesheet" href="Programstyle.css">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/2.0.11/typed.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.1/jquery.waypoints.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" />
+     <style>
+         body{
+            background: url('KENJIMIN PRESENTATION 101.png');
+            background-attachment: fixed;
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+
+
+         }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+            padding-top: 100px;
+            padding-bottom: 20px;
+            font-size: 50px;
+        }
+
+        .click-me-btn {
+            display: block;
+            margin: 20px auto;
+            padding: 10px 20px;
+            font-size: 18px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .click-me-btn:hover {
+            background-color: #0056b3;
+        }
+        .products {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+        }
+        .product-card {
+            background: white;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            width: 300px;
+            padding: 15px;
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            display: flex;
+            flex-direction: column;
+            align-items: center; /* Centers the image and other elements horizontally */
+            min-height: 350px; /* Set a minimum height to ensure consistent alignment */
+            position: relative; /* For positioning the badge */
+        }
+        .product-card img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 10px;
+            position: relative; /* For positioning the badge */
+        }
+        .badge {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background: red;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: bold;
+            z-index: 1;
+        }
+        .product-card h3 {
+            margin: 10px 0;
+            color: #333;
+        }
+        .product-card p {
+            color: #666;
+            margin: 5px 0;
+        }
+        .price {
+            font-weight: bold;
+            color: #007bff;
+        }
+        .card-btn {
+            padding: 8px 16px;
+            background-color: red;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-top: auto; /* Push the button to the bottom of the card */
+        }
+        .card-btn:hover {
+            color: red;
+            background-color: white;
+            border: 2px solid red;
+        }
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+            justify-content: center;
+            align-items: center;
+        }
+        .modal-content {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            width: 90%;
+            max-width: 500px;
+            text-align: center;
+            position: relative;
+        }
+        .modal-header {
+            background: url('KenjiMin.jpg') center/cover;
+            height: 150px;
+            border-radius: 8px 8px 0 0;
+            position: relative;
+        }
+        .modal-body {
+            padding-top: 80px; /* To account for the overlapping image */
+        }
+        .modal img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid white;
+            position: absolute;
+            bottom: -60px; /* Half the height (60px) above the header bottom */
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        .modal h2 {
+            margin: 10px 0;
+            color: #333;
+        }
+        .modal p {
+            color: #666;
+            margin: 5px 0;
+        }
+        .modal .price {
+            font-weight: bold;
+            color: red;
+            font-size: 1.2em;
+        }
+        .close-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: #dc3545;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            cursor: pointer;
+            font-size: 18px;
+            z-index: 1001; /* Above the header */
+        }
+        .close-btn:hover {
+            background: #c82333;
+        }
+        .file-btn {
+            padding: 8px 16px;
+            background-color: red;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin: 5px;
+        }
+        .file-btn:hover {
+            background-color: rgb(124, 4, 4);
+        }
+        .file-section {
+            margin-top: 15px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .file-item {
+            display: flex;
+            align-items: center;
+            margin: 5px 0;
+        }
+        /* .file-item span{
+            margin-right: 10px;
+        } */
+        #fileBtn2{
+            margin-right: 20px;
+        }
+
+        
+
+
+        header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .filter-container {
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        select {
+            padding: 8px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            background: #fff;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            cursor: pointer;
+        }
+        select:focus {
+            outline: none;
+            border-color: #007bff;
+            box-shadow: 0 0 0 2px rgba(0,123,255,0.25);
+        }
+        .item-list {
+            list-style: none;
+            padding: 0;
+        }
+        .item {
+            background: white;
+            margin: 10px 0;
+            padding: 15px;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .item h3 {
+            margin: 0 0 5px 0;
+        }
+        .item p {
+            margin: 0;
+            color: #666;
+        }
+        .buttons { margin-bottom: 20px; text-align: center; }
+        button { 
+            margin: 2px; 
+            padding: 5px 8px; cursor: pointer; 
+            font-size: 14px; 
+
+        }
+        button:hover{
+            background-color: rgb(202, 198, 198);
+        }
+        #results { margin-top: 20px; }
+
+        /* Custom Dropdown Styles */
+        .custom-dropdown {
+            position: relative;
+            display: inline-block;
+            width: 200px;
+            margin-left: 10px;
+        }
+        .dropdown-selected {
+            background: #fff;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            padding: 8px 12px;
+            cursor: pointer;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            transition: border-color 0.3s ease;
+        }
+        .dropdown-selected:hover {
+            border-color: red;
+        }
+        .dropdown-selected::after {
+            content: '▼';
+            float: right;
+            color: #666;
+            transition: transform 0.3s ease;
+        }
+        .custom-dropdown.open .dropdown-selected::after {
+            transform: rotate(180deg);
+        }
+        .dropdown-options {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            background: #fff;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            z-index: 1000;
+            max-height: 200px;
+            overflow-y: auto;
+        }
+        .custom-dropdown.open .dropdown-options {
+            display: block;
+        }
+        .option {
+            padding: 10px 12px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .option:hover {
+            background-color: #f8f9fa;
+        }
+        .category {
+            font-weight: bold;
+            position: relative;
+        }
+        .sub-options {
+            display: none;
+            margin-left: 20px;
+            border-left: 2px solid red;
+            padding-left: 10px;
+        }
+        .category:hover .sub-options {
+            display: block;
+        }
+        .sub-option {
+            padding: 5px 0;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+        .sub-option:hover {
+            color: red;
+        }
+
+        /* Scroll up button */
+        .scroll-up-btn {
+            position: fixed;
+            height: 45px;
+            width: 42px;
+            background: red;
+            right: 30px;
+            bottom: 10px;
+            text-align: center;
+            line-height: 45px;
+            color: #fff;
+            z-index: 9999;
+            font-size: 30px;
+            border-radius: 6px;
+            cursor: pointer;
+            opacity: 0;
+            pointer-events: none;
+            transition: all 0.3s ease;
+        }
+        .scroll-up-btn.show {
+            bottom: 30px;
+            opacity: 1;
+            pointer-events: auto;
+        }
+        .scroll-up-btn:hover {
+            background: #0056b3;
+        }
+
+        /* Responsive navigation */
+        @media (max-width: 768px) {
+            .menu {
+                position: fixed;
+                top: 100px;
+                left: -100%;
+                background: rgba(0, 0, 0, 0.9);
+                height: 100vh;
+                width: 100%;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                transition: left 0.3s ease;
+                z-index: 999;
+            }
+            .menu.active {
+                left: 0;
+            }
+            .menu li {
+                margin: 20px 0;
+            }
+            .menu-btn {
+                display: block;
+                cursor: pointer;
+            }
+        }
+         
+    </style>
+</head>
+
+<body>
+    <div class="scroll-up-btn">
+        <i class="fas fa-angle-up"></i>
+    </div>
+    <nav class="navbar">
+        <div class="max-width">
+            <div class="logo"><a href="#">ケンジ<span>ミン</span></a></div>
+            <ul class="menu">
+                <li><a href="samplehtml copy.html" class="menu-btn">Home</a></li>
+                <li><a href="samplehtml copy.html#about" class="menu-btn">About</a></li>
+                <li><a href="Studentprofile.html" class="menu-btn">Student</a></li>
+                <li><a href="staffs.html" class="menu-btn">Team</a></li>
+                <!-- <li><a href="#testimonial" class="menu-btn">Testimonial</a></li> -->
+                <li><a href="samplehtml copy.html#contact" class="menu-btn">Contact</a></li>
+            </ul>
+            <div class="menu-btn">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </nav>
+
+    <!-- <div>
+        <img src="Kenjimin.jpg" alt="">
+    </div> -->
+
+     <div class="container">
+
+        <h1>Student profile</h1>
+
+
+
+        <div class="filter-container">
+            <label>Filter by Student:</label>
+            <div class="custom-dropdown">
+                <div class="dropdown-selected" id="dropdownSelected">All Categories</div>
+                <div class="dropdown-options" id="dropdownOptions">
+                    <div class="option" data-value="">All Categories</div>
+                    <div class="option category" data-category="Automotive">Automotive
+                        <div class="sub-options">
+                            <div class="sub-option" data-value="Automotive-Male">Male</div>
+                            <div class="sub-option" data-value="Automotive-Female">Female</div>
+                        </div>
+                    </div>
+                    <div class="option category" data-category="Welding">Welding
+                        <div class="sub-options">
+                            <div class="sub-option" data-value="Welding-Male">Male</div>
+                            <div class="sub-option" data-value="Welding-Female">Female</div>
+                        </div>
+                    </div>
+                    <div class="option category" data-category="Regular">Regular
+                        <div class="sub-options">
+                            <div class="sub-option" data-value="Regular-Male">Male</div>
+                            <div class="sub-option" data-value="Regular-Female">Female</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="buttons">
+        <button onclick="filterProducts('A')">A</button>
+        <button onclick="filterProducts('B')">B</button>
+        <button onclick="filterProducts('C')">C</button>
+        <button onclick="filterProducts('D')">D</button>
+        <button onclick="filterProducts('E')">E</button>
+        <button onclick="filterProducts('F')">F</button>
+        <button onclick="filterProducts('G')">G</button>
+        <button onclick="filterProducts('H')">H</button>
+        <button onclick="filterProducts('I')">I</button>
+        <button onclick="filterProducts('J')">J</button>
+        <button onclick="filterProducts('K')">K</button>
+        <button onclick="filterProducts('L')">L</button>
+        <button onclick="filterProducts('M')">M</button>
+        <button onclick="filterProducts('N')">N</button>
+        <button onclick="filterProducts('O')">O</button>
+        <button onclick="filterProducts('P')">P</button>
+        <button onclick="filterProducts('Q')">Q</button>
+        <button onclick="filterProducts('R')">R</button>
+        <button onclick="filterProducts('S')">S</button>
+        <button onclick="filterProducts('T')">T</button>
+        <button onclick="filterProducts('U')">U</button>
+        <button onclick="filterProducts('V')">V</button>
+        <button onclick="filterProducts('W')">W</button>
+        <button onclick="filterProducts('X')">X</button>
+        <button onclick="filterProducts('Y')">Y</button>
+        <button onclick="filterProducts('Z')">Z</button>
+    </div>
+    <div id="results"></div>
+         
+
+         <ul id="itemList" class="item-list">
+        <!-- Items will be populated here by JavaScript -->
+        </ul>
+        
+        <div class="products" id="productsContainer">
+            <!-- Products will be dynamically inserted here -->
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div id="productModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button class="close-btn" id="closeModal">&times;</button>
+                <img id="modalImage" src="" alt="">
+            </div>
+            <div class="modal-body">
+                <h2 id="modalName"></h2>
+                <p id="modalDescription"></p>
+                <p class="price" id="modalPrice"></p>
+                <div class="file-section">
+                    <div class="file-item">
+                        <span>履歴書</span><button class="file-btn" id="fileBtn1">Open File</button> 
+                    </div>
+                    <div class="file-item">
+                        <span>自己紹介</span><button class="file-btn" id="fileBtn2">Open File</button> 
+                    </div>
+                    <div class="file-item">
+                        <span>自己史</span><button class="file-btn" id="fileBtn3">Open File</button> 
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div>
+        <br>
+    </div>
+    
+    <script>
+        const now = new Date();
+        // Sample product data with PDF links, pro flag, and some course names
+        const products = [
+            { id: 1, name: "FAUSTINO DANIEL", price: "D 45-04", description: "ファウスティノ ダニエル", image: "img/faustino.png", pdfs: ["pdf/Faustino.pdf", "https://youtu.be/o9dnXG1rASw?si=D2bxhQo6PRKeHqEx ", " "], pro: false , deviceName: "FAUSTINO DANIEL " , createdAt: new Date(now.getTime() - 10 * 24 * 60 * 60 * 1000), category: "Automotive", gender: "Male"},
+            { id: 2, name: "GARCIA ROBERT", price: "D 45-05", description: "ガルシャ ロベルト", image: "img/GARCIA.png", pdfs: ["pdf/Garcia.pdf ", "https://youtu.be/J4qzg9tJlQ4?si=4IKno0Fe6LcmQLsk ", " "], pro: false, deviceName:"GARCIA ROBERT", category: "Welding", gender: "Male"  },
+            { id: 3, name: "PALMERO HUMPHREY KELLY ", price: " D 49-08", description: "パルメロ  ハンフリー ケリー ", image: "img/PALMERO.png", pdfs: ["pdf/Palmero.pdf ", "https://youtu.be/rBVxBtb1__k?si=lkrqTaXA40dCS7hr ", " "], pro: false, deviceName: "PALMERO HUMPHREY KELLY", category: "Automotive", gender: "Male" },
+            { id: 4, name: "BULURAN MAYNARD ", price: "D-40-06 ", description: "ブルラン メイナルド ", image: "img/BULURAN.png ", pdfs: ["pdf/Buluran, Maynard.pdf ", "https://youtu.be/WbakLJuCwMo?si=0dvNC9W2DSNJmY4m ", "oitachi/Buluran-Maynardの生い立ち.pdf "], pro: false , deviceName: "BULURAN MAYNARD ", category: "Automotive", gender: "Male" },
+            { id: 5, name: "ENERIA JEHAN ", price: "D 48-07 ", description: "エネリア ジェハン ", image: "img/ENERIA.png ", pdfs: ["pdf/Eneria, Jehan P..pdf ", "https://www.youtube.com/watch?v=lxSWtZyjX-8 ", "oitachi/ "], pro: false , deviceName: "ENERIA JEHAN ", category: "Automotive", gender: "Female" },
+            { id: 6, name: "BACAGAN ABIGAIL ", price: "D 47-03 ", description: "バカガン アビゲール  ", image: "img/BACAGAN ABEGAIL.png ", pdfs: ["pdf/Bacagan-Abegail.pdf ", "https://youtu.be/KPrwexT0QHk?si=RaHF1m6IbHqCuLZr ", "oitachi/Bacagan-Abigailの生い立ち.pdf "], pro: false , deviceName: "BACAGAN ABIGAIL ", category: "Regular", gender: "Female" },
+            { id: 7, name: "BACAGAN CINDY ROSE  ", price: "D 47-04 ", description: "バカガン アビゲール  ", image: "img/BACAGAN CINDY.png ", pdfs: ["pdf/Bacagan-Cindy-Rose.pdf ", "https://youtu.be/2BHHH4wgAd0?si=YaMy5tCgfP66hrTC ", "oitachi/Bacagan-Cindy-Roseの生い立ち.pdf "], pro: false , deviceName: "BACAGAN CINDY ROSE ", category: "Regular", gender: "Female" },
+            { id: 8, name: "ARABIS, JOANA MARIE  ", price: "D 47-01 ", description: "アラビス ジョアナ マリー", image: "img/ARABIS.png " , pdfs: ["pdf/Arabis.pdf ", "https://drive.google.com/file/d/11ovCfBvvoy0pVkyvIcQ1vWMMRbeuHMEl/view?fbclid=IwY2xjawNUixNleHRuA2FlbQIxMABicmlkETA5WWFIa3FVOTJhSEVPcXJoAR5eVHYe9vXMfHaaHUwAH-XtXOu_eLfQ73yhRf_-VYv5a5d3T2_X_fIHsNYS1A_aem_X9QBl2HBmd6GBqGCMm7I9g&pli=1 ", " "] , pro: false , deviceName: "ARABIS, JOANA MARIE ", category: "Regular", gender: "Female"},
+            { id: 9, name: "DIO MYLA ", price: "D 47-10 ", description: "ディオ マイラ ", image: "img/DIO.png ", pdfs: ["pdf/DIO.pdf ", "https://drive.google.com/file/d/1QjVSlTjlOruvBZHcVO2eHrB6cB0v8LIC/view?fbclid=IwY2xjawNUi71leHRuA2FlbQIxMABicmlkETA5WWFIa3FVOTJhSEVPcXJoAR40TMJilH8vKTwd1zrtBsJUrqPSkpJnbXG8ME_WUcojL16WEThmir7uDQJS0w_aem_s4LXQuDoI2i9MgxGFthgsA ", "oitachi/Dio-Mylaの生い立ち.pdf "], pro: false , deviceName: "DIO MYLA ", category: "Regular", gender: "Female"},
+            { id: 10, name: "ARIKAWA SARINAH MARIE ", price: "D 51-01", description: "アリカワ サリナ マリー ", image: "img/AIKAWA G.png ", pdfs: ["pdf/ARIKAWA G.pdf ", "https://youtu.be/EbAyJcPPMVg?si=4ac6c1zwsE8eIDfS ", "oitachi/Arikawa-Sarinah-Marieの生い立ち.pdf "], pro: false , deviceName: "ARIKAWA SARINAH MARIE ", category: "Regular", gender: "Female" },
+            { id: 11, name: "ARIKAWA, SEIMON TAKESHI ", price: " D 51-02", description: "アリカワ  セイモン タケシ ", image: "img/ARIKAWA B.png", pdfs: ["pdf/ARIKAWA B.pdf ", "https://youtu.be/1xE85HTc30M?si=eOtfklQMXivt6KyE ", "oitachi/Arikawa-Seimon-Takeshiの生い立ち "], pro: false , deviceName: "ARIKAWA, SEIMON TAKESHI ", category: "Regular", gender: "Male" },
+            { id: 12, name: "JAMILI, JUDITH", price: "D 52-04 ", description: "ハミリ ジュディス ", image: "img/JAMILI.png ", pdfs: ["pdf/JAMILI.pdf ", "https://www.youtube.com/watch?v=8gaGzd48fwk ", "oitachi/Jamili-Judith-の生い立ち.pdf "], pro: false , deviceName: "JAMILI, JUDITH ", category: "Regular", gender: "Female" },
+            { id: 13, name: "REYES, IVY ", price: "D 48*18 ", description: "レイェス アイヴィ ", image: "img/REYES.png ", pdfs: ["pdf/REYES IVY.pdf ", "https://www.youtube.com/watch?v=o5taLK66kTc ", "oitachi/Reyes-Ivyの生い立ち.pdf "], pro: false , deviceName: "REYES, IVY ", category: "Regular", gender: "Female" },
+            { id: 14, name: "BARRA LORNA ", price: "D 49-03 ", description: "バラ ローナ ", image: "img/BARRA.png ", pdfs: ["pdf/BARRA.pdf ", "https://www.youtube.com/watch?v=eAv-kEXAW_w ", "oitachi/Barra-Lornaの生い立ち.pdf "], pro: false , deviceName: "BARRA LORNA ", category: "Regular", gender: "Female" },
+            { id: 15, name: "VILLASPER CHRISTIAN ", price: "D 52-11 ", description: "ビラスパー クリスチャン ", image: "img/VILLASPER.png ", pdfs: ["pdf/VILLASPER.pdf ", "https://youtu.be/rNqLeqHWfVI?si=LwMafHEbkaFtb0cQ ", "oitachi/ "], pro: false , deviceName: "VILLASPER CHRISTIAN ", category: "Regular", gender: "Male" },
+            { id: 16, name: "COSTA MARK IAN ", price: "D 52*02 ", description: "コスタ マークイアンマークイアン ", image: "img/COSTA.png ", pdfs: ["pdf/COSTAI.pdf ", "https://youtu.be/rNqLeqHWfVI?si=LwMafHEbkaFtb0cQ ", "oitachi/CostaMark-Ianの生い立ち.pdf "], pro: false , deviceName: "COSTA MARK IAN ", category: "Regular", gender: "Male" },
+            { id: 17, name: "YLAGAN, JOHN PATRICK ", price: "D 50-09 ", description: "イラガン ジョン パトリック ", image: "img/YLAGAN.png ", pdfs: ["pdf/YLAGAN.pdf ", "https://youtu.be/rNqLeqHWfVI?si=LwMafHEbkaFtb0cQ ", "oitachi/Ylagan-John-Pathrickの生い立ち.pdf "] , pro: false , deviceName: "YLAGAN, JOHN PATRICK ", category: "Regular", gender: "Male"},
+            { id: 18, name: "LUBOS JOHN CHRISTIAN ", price: "D 50-04 ", description: "ルボス ジョン クリスチャン ", image: "img/LUBOS.png ", pdfs: ["pdf/LUBOS.pdf ", "https://youtu.be/rNqLeqHWfVI?si=LwMafHEbkaFtb0cQ ", "oitachi/ "] , pro: false , deviceName: "LUBOS JOHN CHRISTIAN ", category: "Regular", gender: "Male"},
+            { id: 19, name: "PANGAN, PATRICIA ANN  ", price: "D 39-09 ", description: "パンガン パトリシア アン ", image: "img/PANGAN.png ", pdfs: ["pdf/PANGAN.pdf ", "https://youtu.be/rNqLeqHWfVI?si=LwMafHEbkaFtb0cQ ", "oitachi/ "] , pro: false , deviceName: "PANGAN, PATRICIA ANN ", category: "Regular", gender: "Female"},
+            { id: 20, name: "PALCE, JENNIFER  ", price: "D 31-12 ", description: "パルセ ジェニファー ", image: "img/PALCE.png ", pdfs: ["pdf/PALCE.pdf ", " ", " "] , pro: false , deviceName: "PALCE, JENNIFER ", category: "Regular", gender: "Female"},
+            // { id: 21, name: "NALVA RALPH VINCENT ", price: "D 52-07 ", description: "ナルヴァ ラルフ ヴィンセント ", image: "img/NALVA1.png ", pdfs: ["pdf/NALVA.pdf ", " ", "oitachi/Nalva-Ralph-Vincentの生い立ち.pdf "], pro: false , deviceName: "NALVA RALPH VINCENT ", category: "Regular", gender: "Male" },
+            // { id: 22, name: "Malekshahi, Maryam R. ", deviceName: "Malekshahi, Maryam R. ",price: " ", description: " ", image: "img/ ", pdfs: ["pdf/ ", " ", " "] , pro: false , category: "Regular", gender: " "},
+            // { id: 23, name: "Ramirez, Karl Vincent S. ", deviceName: "Ramirez, Karl Vincent S. ",price: " ", description: " ", image: "img/Ramirez.png ", pdfs: ["pdf/ ", " ", " "] , pro: false , category: "Regular", gender: " "},
+            // { id: 24, name: "Palce, Jennifer R. ", deviceName: "Palce, Jennifer R. ",price: " ", description: " ", image: "img/ ", pdfs: ["pdf/ ", " ", " "] , pro: false , category: "Regular", gender: " "},
+            // { id: 25, name: "Pangan, Patricia Ann V. ", deviceName: "Pangan, Patricia Ann V. ",price: " ", description: " ", image: "img/ ", pdfs: ["pdf/ ", " ", " "] , pro: false , category: "Regular", gender: " "},
+            // { id: 26, name: "Busa, Marco Luis ", deviceName: "Busa, Marco Luis ",price: " ", description: " ", image: "img/ ", pdfs: ["pdf/ ", " ", " "] , pro: false , category: "Regular", gender: " "},
+            // { id: 27, name: "Dazo, Catherine ", deviceName: "Dazo, Catherine ",price: " ", description: " ", image: "img/ ", pdfs: ["pdf/ ", " ", " "] , pro: false , category: "Regular", gender: " "},
+            // { id: 28, name: "Albuna, Krystal Joyce  ", deviceName: "Albuna, Krystal Joyce  ",price: " ", description: " ", image: "img/ ", pdfs: ["pdf/ ", " ", " "] , pro: false , category: "Regular", gender: " "},
+            // { id: 29, name: "Compoc, Kedy B. ", deviceName: "Compoc, Kedy B. ",price: " ", description: " ", image: "img/ ", pdfs: ["pdf/ ", " ", " "] , pro: false , category: "Regular", gender: " "},
+            // { id: 30, name: "Española, Gretchen ", deviceName: "Española, Gretchen ",price: " ", description: " ", image: "img/ ", pdfs: ["pdf/ ", " ", " "] , pro: false , category: "Regular", gender: " "},
+            // { id: 31, name: "Sanchez, Xena Nadine ", deviceName: "Sanchez, Xena Nadine ",price: " ", description: " ", image: "img/ ", pdfs: ["pdf/ ", " ", " "] , pro: false , category: "Regular", gender: " "},
+            // { id: 32, name: "Ta-ala, Kristoffer Lee ", deviceName: "Ta-ala, Kristoffer Lee ",price: " ", description: " ", image: "img/ ", pdfs: ["pdf/ ", " ", " "] , pro: false , category: "Regular", gender: " "},
+            // { id: 33, name: "Arellano, Jerome ", deviceName: "Arellano, Jerome ",price: " ", description: " ", image: "img/ ", pdfs: ["pdf/ ", " ", " "] , pro: false , category: "Regular", gender: " "},
+            // { id: 34, name: "Delarosa, April Rose ", deviceName: "Delarosa, April Rose ",price: " ", description: " ", image: "img/ ", pdfs: ["pdf/ ", " ", " "] , pro: false , category: "Regular", gender: " "},
+            // { id: 35, name: "Esteban, Martae Ellise P. ", deviceName: "Esteban, Martae Ellise P. ",price: " ", description: " ", image: "img/ ", pdfs: ["pdf/ ", " ", " "] , pro: false , category: "Regular", gender: " "},
+            // { id: 36, name: "Gacita, Nelybeth ", deviceName: "Gacita, Nelybeth ",price: " ", description: " ", image: "img/ ", pdfs: ["pdf/ ", " ", " "] , pro: false , category: "Regular", gender: " "},
+            // { id: 37, name: "Ligan, Kianne Patrick ", deviceName: "Ligan, Kianne Patrick ",price: " ", description: " ", image: "img/ ", pdfs: ["pdf/ ", " ", " "] , pro: false , category: "Regular", gender: " "},
+            // { id: 38, name: "Topacio, William John ", deviceName: "Topacio, William John ",price: " ", description: " ", image: "img/ ", pdfs: ["pdf/ ", " ", " "] , pro: false , category: "Regular", gender: " "},
+            // { id: 39, name: "Abanilla, Justine Mark C. ", deviceName: "Abanilla, Justine Mark C. ",price: " ", description: " ", image: "img/ ", pdfs: ["pdf/ ", " ", " "] , pro: false , category: "Regular", gender: " "},
+            // { id: 40, name: "Atendido, Kim V. ", deviceName: "Atendido, Kim V. ",price: " ", description: " ", image: "img/ ", pdfs: ["pdf/ ", " ", " "] , pro: false , category: "Regular", gender: " "},
+            // { id: 41, name: "Vallena, Jhade L. ", deviceName: "Vallena, Jhade L. ",price: " ", description: " ", image: "img/ ", pdfs: ["pdf/ ", " ", " "] , pro: false , category: "Regular", gender: " "},
+            // { id: 42, name: "Elicano, Ian B. ", deviceName: "Elicano, Ian B. ",price: " ", description: " ", image: "img/ ", pdfs: ["pdf/ ", " ", " "] , pro: false , category: "Regular", gender: " "},
+            // { id: 43, name: "Tuba, John Carlo S. ", deviceName: "Tuba, John Carlo S. ",price: " ", description: " ", image: "img/ ", pdfs: ["pdf/ ", " ", " "] , pro: false , category: "Regular", gender: " "},
+            // { id: 44, name: "Cruz, Miguel Jabriel Z. ", deviceName: "Cruz, Miguel Jabriel Z. ",price: " ", description: " ", image: "img/ ", pdfs: ["pdf/ ", " ", " "] , pro: false , category: "Regular", gender: " "},
+            // { id: 45, name: "Garcia, Robert M. ", deviceName: "Garcia, Robert M. ",price: " ", description: " ", image: "img/ ", pdfs: ["pdf/ ", " ", " "] , pro: false , category: "Regular", gender: " "},
+            // { id: 46, name: "Matsumoto, Yasmine May W. ", deviceName: "Matsumoto, Yasmine May W. ",price: " ", description: " ", image: "img/ ", pdfs: ["pdf/ ", " ", " "] , pro: false , category: "Regular", gender: " "},
+            // { id: 47, name: "Napili Dimple Cate A. ", deviceName: "Napili Dimple Cate A. ",price: " ", description: " ", image: "img/ ", pdfs: ["pdf/ ", " ", " "] , pro: false , category: "Regular", gender: " "},
+            // { id: 48, name: "Quiseo, Emma Rose D. ", deviceName: "Quiseo, Emma Rose D. ",price: " ", description: " ", image: "img/ ", pdfs: ["pdf/ ", " ", " "] , pro: false , category: "Regular", gender: " "},
+            // { id: 49, name: "Sabellina, Irish Mae R. ", deviceName: "Sabellina, Irish Mae R. ",price: " ", description: " ", image: "img/ ", pdfs: ["pdf/ ", " ", " "] , pro: false , category: "Regular", gender: " "},
+            // { id: 50, name: "Alvarez, Vince C. ", deviceName: "Alvarez, Vince C. ",price: " ", description: " ", image: "img/ ", pdfs: ["pdf/ ", " ", " "] , pro: false , category: "Regular", gender: " "},
+            // { id: 51, name: "Atole, Sarah Jane D. ", deviceName: "Atole, Sarah Jane D. ",price: " ", description: " ", image: "img/ ", pdfs: ["pdf/ ", " ", " "] , pro: false , category: "Regular", gender: " "},
+            // { id: 52, name: "Calapan, Wencel B. ", deviceName: "Calapan, Wencel B. ",price: " ", description: " ", image: "img/ ", pdfs: ["pdf/ ", " ", " "] , pro: false , category: "Regular", gender: " "},
+            // { id: 53, name: "Casas, David Louise M. ", deviceName: "Casas, David Louise M. ",price: " ", description: " ", image: "img/ ", pdfs: ["pdf/ ", " ", " "] , pro: false , category: "Regular", gender: " "},
+            // { id: 54, name: "Corona, Jovey Harel C. ", deviceName: "Corona, Jovey Harel C. ",price: " ", description: " ", image: "img/ ", pdfs: ["pdf/ ", " ", " "] , pro: false , category: "Regular", gender: " "},
+            // { id: 55, name: "Delos Santos, Lester B. ", deviceName: "Delos Santos, Lester B. ",price: " ", description: " ", image: "img/ ", pdfs: ["pdf/ ", " ", " "] , pro: false , category: "Regular", gender: " "},
+            // { id: 56, name: "Hindrano, Jay Ann ", deviceName: "Hindrano, Jay Ann ",price: " ", description: " ", image: "img/ ", pdfs: ["pdf/ ", " ", " "] , pro: false , category: "Regular", gender: " "},
+            // { id: 57, name: "Importante, John Lloyd ", deviceName: "Importante, John Lloyd ",price: " ", description: " ", image: "img/ ", pdfs: ["pdf/ ", " ", " "] , pro: false , category: "Regular", gender: " "},
+            // { id: 58, name: "Caitum, Lisly Ann A. ", deviceName: "Caitum, Lisly Ann A. ",price: " ", description: " ", image: "img/ ", pdfs: ["pdf/ ", " ", " "] , pro: false , category: "Regular", gender: " "},
+            // { id: 59, name: "Masagca, Ellen S. ", deviceName: "Masagca, Ellen S. ",price: " ", description: " ", image: "img/ ", pdfs: ["pdf/ ", " ", " "] , pro: false , category: "Regular", gender: " "},
+            // { id: 60, name: "Narbonita, John Mark B. ", deviceName: "Narbonita, John Mark B. ",price: " ", description: " ", image: "img/ ", pdfs: ["pdf/ ", " ", " "] , pro: false , category: "Regular", gender: " "},
+            // { id: 61, name: "Mata, Maria Kasandra E. ", deviceName: "Mata, Maria Kasandra E. ",price: " ", description: " ", image: "img/ ", pdfs: ["pdf/ ", " ", " "] , pro: false , category: "Regular", gender: " "},
+            // { id: 62, name: "Delos Santos, James Ryan A. ", deviceName: "Delos Santos, James Ryan A. ",price: " ", description: " ", image: "img/ ", pdfs: ["pdf/ ", " ", " "] , pro: false , category: "Regular", gender: " "},
+            // { id: 63, name: "Delos Santos, Jazzreal Oddessey S. ", deviceName: "Delos Santos, Jazzreal Oddessey S. ",price: " ", description: " ", image: "img/ ", pdfs: ["pdf/ ", " ", " "] , pro: false , category: "Regular", gender: " "},
+            // { id: 64, name: "Aggarao, Kate Francis ", deviceName: "Aggarao, Kate Francis ",price: " ", description: " ", image: "img/ ", pdfs: ["pdf/ ", " ", " "] , pro: false , category: "Regular", gender: " "},
+            // { id: 65, name: "Ancheta, Sheryl ", deviceName: "Ancheta, Sheryl ",price: " ", description: " ", image: "img/ ", pdfs: ["pdf/ ", " ", " "] , pro: false , category: "Regular", gender: " "},
+            // { id: 66, name: "Candido, Stephanie M. ", deviceName: "Candido, Stephanie M. ",price: " ", description: " ", image: "img/ ", pdfs: ["pdf/ ", " ", " "] , pro: false , category: "Regular", gender: " "},
+            // { id: 67, name: "Obonga, Viva Jones G. ", deviceName: "Obonga, Viva Jones G. ",price: " ", description: " ", image: "img/ ", pdfs: ["pdf/ ", " ", " "] , pro: false , category: "Regular", gender: " "},
+            // { id: 68, name: "Papa, Shiela Mae Fernandez ", deviceName: "Papa, Shiela Mae Fernandez ",price: " ", description: " ", image: "img/ ", pdfs: ["pdf/ ", " ", " "] , pro: false , category: "Regular", gender: " "},
+            // { id: 69, name: "Arot, Sayuri  ", deviceName: "Arot, Sayuri  ",price: " ", description: " ", image: "img/ ", pdfs: ["pdf/ ", " ", " "] , pro: false , category: "Regular", gender: " "},
+            // { id: 70, name: "Monzon, Stefhanie Reyel E. ", deviceName: "Monzon, Stefhanie Reyel E. ",price: " ", description: " ", image: "img/ ", pdfs: ["pdf/ ", " ", " "] , pro: false , category: "Regular", gender: " "},
+            // { id: 71, name: "Nalva, Ralph Vincent O. ", deviceName: "Nalva, Ralph Vincent O. ",price: " ", description: " ", image: "img/ ", pdfs: ["pdf/ ", " ", " "] , pro: false , category: "Regular", gender: " "},
+            // { id: 72, name: "Riña, John Lee C. ", deviceName: "Riña, John Lee C. ",price: " ", description: " ", image: "img/ ", pdfs: ["pdf/ ", " ", " "] , pro: false , category: "Regular", gender: " "},
+            // { id: 73, name: "Villasper, Christian A. ", deviceName: "Villasper, Christian A. ",price: " ", description: " ", image: "img/ ", pdfs: ["pdf/ ", " ", " "] , pro: false , category: "Regular", gender: " "},
+            // { id: 74, name: "Estrella, Joemel B. ", deviceName: "Estrella, Joemel B. ",price: " ", description: " ", image: "img/ ", pdfs: ["pdf/ ", " ", " "] , pro: false , category: "Regular", gender: " "},
+            // { id: 75, name: "Soriano, Diether Arvin C. ", deviceName: "Soriano, Diether Arvin C. ",price: " ", description: " ", image: "img/ ", pdfs: ["pdf/ ", " ", " "] , pro: false , category: "Regular", gender: " "},
+            // { id: 76, name: "Arado, Ujin A. ", deviceName: "Arado, Ujin A. ",price: " ", description: " ", image: "img/ ", pdfs: ["pdf/ ", " ", " "] , pro: false , category: "Regular", gender: " "},
+            // { id: 77, name: "Calina, Jovelyn ", deviceName: "Calina, Jovelyn ",price: " ", description: " ", image: "img/ ", pdfs: ["pdf/ ", " ", " "] , pro: false , category: "Regular", gender: " "},
+            // { id: 78, name: "Cubelo, James Jerald M. ", deviceName: "Cubelo, James Jerald M. ",price: " ", description: " ", image: "img/ ", pdfs: ["pdf/ ", " ", " "] , pro: false , category: "Regular", gender: " "},
+            // { id: 79, name: "Cubelo, Jeric L. ", deviceName: "Cubelo, Jeric L. ",price: " ", description: " ", image: "img/ ", pdfs: ["pdf/ ", " ", " "] , pro: false , category: "Regular", gender: " "},
+            // { id: 80, name: "Denum, Cean Carlo E. ", deviceName: "Denum, Cean Carlo E. ",price: " ", description: " ", image: "img/ ", pdfs: ["pdf/ ", " ", " "] , pro: false , category: "Regular", gender: " "},
+            // { id: 81, name: "Lumontad, Anthony C. ", deviceName: "Lumontad, Anthony C.",price: " ", description: " ", image: "img/ ", pdfs: ["pdf/ ", " ", " "] , pro: false , category: "Regular", gender: " "},
+            // { id: 82, name: "Lumontad, Whenston C. ", deviceName: "Lumontad, Whenston C. ",price: " ", description: " ", image: "img/ ", pdfs: ["pdf/ ", " ", " "] , pro: false , category: "Regular", gender: " "},
+            // { id: 83, name: "Sagun, Jimrex N. ", deviceName: "Sagun, Jimrex N. ",price: " ", description: " ", image: "img/ ", pdfs: ["pdf/ ", " ", " "] , pro: false , category: "Regular", gender: " "},
+            // { id: 84, name: "Wiedmier, William III R. ", deviceName: "Wiedmier, William III R. ",price: " ", description: " ", image: "img/ ", pdfs: ["pdf/ ", " ", " "] , pro: false , category: "Regular", gender: " "},
+            // { id: 85, name: "Agustin, Jade Michael C. ", deviceName: "Agustin, Jade Michael C. ",price: " ", description: " ", image: "img/ ", pdfs: ["pdf/ ", " ", " "] , pro: false , category: "Regular", gender: " "},
+            // { id: 86, name: "Cagadas, Jake D. ", deviceName: "Cagadas, Jake D. ",price: " ", description: " ", image: "img/ ", pdfs: ["pdf/ ", " ", " "] , pro: false , category: "Regular", gender: " "},
+            // { id: 87, name: "Calapuan, Ronel S. ", deviceName: "Calapuan, Ronel S. ",price: " ", description: " ", image: "img/ ", pdfs: ["pdf/ ", " ", " "] , pro: false , category: "Regular", gender: " "},
+            // { id: 88, name: "Intano, Jasper Gem L. ", deviceName: "Intano, Jasper Gem L. ",price: " ", description: " ", image: "img/ ", pdfs: ["pdf/ ", " ", " "] , pro: false , category: "Regular", gender: " "},
+            // { id: 89, name: "Labnotin, Roy Melvin J. ", deviceName: "Labnotin, Roy Melvin J. ",price: " ", description: " ", image: "img/ ", pdfs: ["pdf/ ", " ", " "] , pro: false , category: "Regular", gender: " "},
+            // { id: 90, name: "Racines, Ardy A. ", deviceName: "Racines, Ardy A. ",price: " ", description: " ", image: "img/ ", pdfs: ["pdf/ ", " ", " "] , pro: false , category: "Regular", gender: " "},
+            // { id: 91, name: "Sabuero, Francis Carl C. ", deviceName: "Sabuero, Francis Carl C. ",price: " ", description: " ", image: "img/ ", pdfs: ["pdf/ ", " ", " "] , pro: false , category: "Regular", gender: " "},
+            // { id: 92, name: "Talaman, Cherry Mae K. ", deviceName: "Talaman, Cherry Mae K. ",price: " ", description: " ", image: "img/ ", pdfs: ["pdf/ ", " ", " "] , pro: false , category: "Regular", gender: " "},
+            // { id: 93, name: "Aquino, Meir Nickolyde M. ", deviceName: "Aquino, Meir Nickolyde M. ",price: " ", description: " ", image: "img/ ", pdfs: ["pdf/ ", " ", " "] , pro: false , category: "Regular", gender: " "},
+            // { id: 94, name: "Gonzales, Padme Clarice T. ", deviceName: "Gonzales, Padme Clarice T. ",price: " ", description: " ", image: "img/ ", pdfs: ["pdf/ ", " ", " "] , pro: false , category: "Regular", gender: " "},
+            // { id: 95, name: "Dela Cruz, Clyde B. ", deviceName: "Dela Cruz, Clyde B. ",price: " ", description: " ", image: "img/ ", pdfs: ["pdf/ ", " ", " "] , pro: false , category: "Regular", gender: " "},
+            // { id: 96, name: "Morilla, Geesom M. ", deviceName: "Morilla, Geesom M. ",price: " ", description: " ", image: "img/ ", pdfs: ["pdf/ ", " ", " "] , pro: false , category: "Regular", gender: " "},
+            // { id: 97, name: "Famor, Jeffrey H. ", deviceName: "Famor, Jeffrey H. ",price: " ", description: " ", image: "img/ ", pdfs: ["pdf/ ", " ", " "] , pro: false , category: "Regular", gender: " "},
+            // { id: 98, name: "Jarupojop, arvey J. ", deviceName: "Jarupojop, arvey J. ",price: " ", description: " ", image: "img/ ", pdfs: ["pdf/ ", " ", " "] , pro: false , category: "Regular", gender: " "},
+            // { id: 99, name: "Manalo, Irene Marie G. ", deviceName: "Manalo, Irene Marie G. ",price: " ", description: " ", image: "img/ ", pdfs: ["pdf/ ", " ", " "] , pro: false , category: "Regular", gender: " "},
+            // { id: 100, name: "Ventura, Maria Angela B. ", deviceName: "Ventura, Maria Angela B. ",price: " ", description: " ", image: "img/ ", pdfs: ["pdf/ ", " ", " "] , pro: false , category: "Regular", gender: " "},
+            // { id: 101, name: "Contawe, John Paul V. ", deviceName: "Contawe, John Paul V. ",price: " ", description: " ", image: "img/ ", pdfs: ["pdf/ ", " ", " "] , pro: false , category: "Regular", gender: " "}
+            
+            
+
+
+
+        ];
+
+        let currentLetter = ''; // Track the current letter filter
+        let currentCategory = ''; // Track the current category filter
+
+        // Function to filter by letter
+        function filterProducts(letter) {
+            currentLetter = letter;
+            applyFilters(currentCategory);
+        }
+
+        // Function to render products
+        function renderProducts(productsToShow) {
+            const container = document.getElementById('productsContainer');
+            container.innerHTML = '';
+
+            productsToShow.forEach(product => {
+                const card = document.createElement('div');
+                card.className = 'product-card';
+
+                // Always remove "course" from display name and description for courses
+                let displayName = product.name.replace(/course/gi, '').trim();
+                let displayDescription = product.description.replace(/course/gi, '').trim();
+
+                // Use deviceName as header for courses if available, otherwise use the name
+                const nameHTML = product.deviceName ? `<h3>${product.deviceName}</h3>` : `<h3>${displayName}</h3>`;
+
+                // Badge only for skilled (pro) products
+                const badgeHTML = product.pro ? '<span class="badge">Skilled</span>' : '';
+
+                card.innerHTML = `
+                    ${badgeHTML}
+                    <img src="${product.image}" alt="${product.name}">
+                    ${nameHTML}
+                    <p>${displayDescription}</p>
+                    <p class="price" style="color: red;">${product.price}</p>
+                    <button class="card-btn" data-id="${product.id}">Click Me</button>
+                `;
+                container.appendChild(card);
+            });
+
+            // Attach event listeners to card buttons
+            document.querySelectorAll('.card-btn').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const productId = this.getAttribute('data-id');
+                    const product = products.find(p => p.id == productId);
+                    openModal(product);
+                });
+            });
+        }
+
+        // Function to open modal
+        function openModal(product) {
+            document.getElementById('modalImage').src = product.image;
+            document.getElementById('modalName').textContent = product.name;
+            document.getElementById('modalDescription').textContent = product.description;
+            document.getElementById('modalPrice').textContent = product.price;
+
+            // Set PDF links for buttons
+            document.getElementById('fileBtn1').onclick = () => window.open(product.pdfs[0]);
+            document.getElementById('fileBtn2').onclick = () => window.open(product.pdfs[1]);
+            document.getElementById('fileBtn3').onclick = () => window.open(product.pdfs[2]);
+
+            document.getElementById('productModal').style.display = 'flex';
+        }
+
+        // Close modal
+        document.getElementById('closeModal').addEventListener('click', function() {
+            document.getElementById('productModal').style.display = 'none';
+        });
+
+        // Close modal on outside click
+        window.addEventListener('click', function(event) {
+            if (event.target === document.getElementById('productModal')) {
+                document.getElementById('productModal').style.display = 'none';
+            }
+        });
+
+        // Initial render
+        renderProducts(products);
+
+        // Custom Dropdown functionality
+        const dropdownSelected = document.getElementById('dropdownSelected');
+        const dropdownOptions = document.getElementById('dropdownOptions');
+        const customDropdown = document.querySelector('.custom-dropdown');
+
+        // Toggle dropdown
+        dropdownSelected.addEventListener('click', function() {
+            customDropdown.classList.toggle('open');
+        });
+
+        // Close dropdown when clicking outside
+        document.addEventListener('click', function(event) {
+            if (!customDropdown.contains(event.target)) {
+                customDropdown.classList.remove('open');
+            }
+        });
+
+        // Handle option clicks
+        dropdownOptions.addEventListener('click', function(event) {
+            const option = event.target.closest('.option, .sub-option');
+            if (option) {
+                let value;
+                let text;
+                if (option.classList.contains('category')) {
+                    value = option.getAttribute('data-category');
+                    text = value;
+                } else {
+                    value = option.getAttribute('data-value');
+                    text = option.textContent.trim();
+                }
+
+                // Update selected text
+                dropdownSelected.textContent = text;
+
+                // Close dropdown
+                customDropdown.classList.remove('open');
+
+                // Apply filter
+                if (value === currentCategory) {
+                    currentLetter = ''; // Reset letter filter when clicking the same category again
+                }
+                currentCategory = value;
+                if (value === '') {
+                    currentLetter = ''; // Reset letter filter when "All Categories" is selected
+                }
+                applyFilters(value);
+            }
+        });
+
+        // Updated applyFilters function to accept categoryValue
+        function applyFilters(categoryValue = '') {
+            let filtered = products;
+
+            // Apply category and gender filter
+            if (categoryValue && categoryValue !== '') {
+                if (categoryValue.includes('-')) {
+                    const [category, gender] = categoryValue.split('-');
+                    filtered = filtered.filter(p => p.category === category && p.gender === gender);
+                } else {
+                    filtered = filtered.filter(p => p.category === categoryValue);
+                }
+            }
+
+            // Apply letter filter if set
+            if (currentLetter) {
+                filtered = filtered.filter(product => product.deviceName && product.deviceName.toUpperCase().startsWith(currentLetter));
+            }
+
+            renderProducts(filtered);
+        }
+
+
+
+         
+
+         
+    </script>
+
+    <!-- footer section start -->
+     
+
+    <script src="samplejavascript.js"></script>
+    <script>
+        // Menu toggle functionality
+        const menuBtn = document.querySelector('.menu-btn');
+        const menu = document.querySelector('.menu');
+
+        menuBtn.addEventListener('click', () => {
+            menu.classList.toggle('active');
+        });
+
+        // Close menu when clicking on a menu item
+        document.querySelectorAll('.menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                menu.classList.remove('active');
+            });
+        });
+
+        // Scroll up button functionality
+        const scrollUpBtn = document.querySelector('.scroll-up-btn');
+
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 500) {
+                scrollUpBtn.classList.add('show');
+            } else {
+                scrollUpBtn.classList.remove('show');
+            }
+        });
+
+        scrollUpBtn.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+    </script>
+</body>
+
+</html>
